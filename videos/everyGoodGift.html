@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.js"></script>
+  <title>Story Tellers Abroad</title>
+</head>
+  <body>
+    <div class="data">
+
+    </div>
+    <footer><p> All video content used on this page is owned by ABWE, and is being used purely for educational purposes.</p></footer>
+
+    <script>
+    $(function(){
+      $.get("../data/everyGoodGift.json", function(videos) {
+        $.get("../tpl/videoPage.tpl.html", function(source){
+          var template = Handlebars.compile(source);
+          var html = template(videos);
+          $(".data").append(html);
+        });
+      });
+    });
+    </script>
+  </body>
+</html>

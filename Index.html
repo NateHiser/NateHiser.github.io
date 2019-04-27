@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.js"></script>
+  <script src="scripts.js"></script>
+  <title>Story Tellers Abroad</title>
+</head>
+  <body>
+    <header>
+      <div class="secondaryHeader"><img src="images/abwe-white.png"/></div>
+      <h1><img src="images/storyTellersLogo.jpg"/></h1>
+    </header>
+    <div class="banner">
+      <h2>VIDEOS</h2>
+    </div>
+    <div id="myBtnContainer" class="filters" style="height:0px">
+        <img src="images/close.png" class="close" onclick="closeFilter()">
+        <button class="all btn active" onclick="filterSelection('all')"> Show all</button>
+        <div class="filterType">
+          <div class="btn" onclick="filterSelection('education')"> <img src="#" /> <p>Education</p></div>
+          <div class="btn" onclick="filterSelection('evangelism')"> <img src="#" /> <p>Evangelism</p></div>
+          <div class="btn" onclick="filterSelection('missionary')"> <img src="#"/> <p>Missionary Work</p></div>
+          <div class="btn" onclick="filterSelection('addiction')"> <img src="#"/> <p>Addiction</p></div>
+          <div class="btn" onclick="filterSelection('service')"> <img src="#" /> <p>Service</p></div>
+          <div class="btn" onclick="filterSelection('redemption')"> <img src="#"/> <p>Redemptions</p></div>
+          <div class="btn" onclick="filterSelection('trinidad')"> <img src="images/trinidad.png"/> <p>Trinidad</p></div>
+          <div class="btn" onclick="filterSelection('peru')"> <img src="images/peru.png"/> <p>Peru</p></div>
+          <div class="btn" onclick="filterSelection('nicaragua')"> <img src="images/nicaragua.png"/> <p>Nicaragua</p></div>
+          <div class="btn" onclick="filterSelection('togo')"> <img src="images/togo.png"/> <p>Togo</p></div>
+      </div>
+    </div>
+    <div class="mainPage">
+
+    <h2 class="open" onclick="openFilter()">Filters</h2>
+
+    <div class="container">
+
+    </div>
+
+    </div>
+      <footer><p> All video content used on this page is owned by ABWE, and is being used purely for educational purposes.</p></footer>
+      <script>
+      filterSelection("all")
+
+      function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("filterDiv");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+          w3RemoveClass(x[i], "show");
+          if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+        }
+      }
+
+      function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+        }
+      }
+
+      function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);
+          }
+        }
+        element.className = arr1.join(" ");
+      }
+
+          var btnContainer = document.getElementById("myBtnContainer");
+          var btns = btnContainer.getElementsByClassName("btn");
+          for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function(){
+              var current = document.getElementsByClassName("active");
+              current[0].className = current[0].className.replace(" active", "");
+              this.className += " active";
+                });
+              }
+    </script>
+  </body>
+</html>
