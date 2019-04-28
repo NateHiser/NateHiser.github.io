@@ -16,7 +16,7 @@
 
     <script>
     $(function(){
-      $.get("../data/homeComing.json", function(videos) {
+      $.get("../data/homecoming.json", function(videos) {
         $.get("../tpl/videoPage.tpl.html", function(source){
           var template = Handlebars.compile(source);
           var html = template(videos);
